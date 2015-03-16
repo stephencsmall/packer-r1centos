@@ -1,0 +1,40 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "name": "r1centos6-vbox",
+            "guest_os_type": "RedHat_64",
+            "iso_url": "http://mirrors.seas.harvard.edu/centos/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
+            "iso_checksum": "eb3c8be6ab668e6d83a118323a789e6c",
+            "iso_checksum_type": "md5",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "shutdown_command": "sudo -S shutdown -P now",
+            "http_directory": "http",
+            "guest_additions_mode": "attach",
+            "boot_command": [
+            "<wait><esc><esc>",
+            "linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter>"
+        ]
+    }],
+    "provisioners": [{
+        "type": "shell",
+        "inline_shebang":"/bin/bash",
+        "start_retry_timeout": "1m",
+        "inline": [
+          "sleep 15",
+          "sudo mkdir /tmp/vboxguest",
+          "sudo mount -t iso9660 -o ro /dev/sr1 /tmp/vboxguest",
+          "sudo yum -y --enablerepo rpmforge install dkms",
+          "sudo yum -y groupinstall 'Development Tools'",
+          "sudo yum -y install kernel-devel-2.6.32-504.el6.x86_64",
+          "cd /tmp/vboxguest",
+          "sudo ./VBoxLinuxAdditions.run",
+          "cd /tmp",
+          "sudo umount /tmp/vboxguest",
+          "sudo rmdir /tmp/vboxguest",
+          "echo Image Provisioned!"
+        ]
+    }],
+    "post-processors":["vagrant"]
+}
