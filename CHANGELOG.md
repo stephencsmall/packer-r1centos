@@ -20,9 +20,11 @@ I've found a usable example [here](http://digitalsandwich.com/packer-built-cento
 
 After a day of bashing this around, I've managed to create a configuration that will produce a viable Vagrant box for REZ-1 use.  I still want to accomplish the following:
 
-- 8/10 times, the build fails after detecting an SSH server is alive.  If I run this with `-debug` on, I can step through this step sometimes, but not always. Figure out why.
-    Error uploading VirtualBox version: Process exited with: 1. Reason was:  ()
-- Clean up naming of outputted files
+- 8 out of 10 times, the build fails after detecting an SSH server is alive.  If I run this with `-debug` on, I can step through this part sometimes, but not always. I need to figure out why.
+
+        Error uploading VirtualBox version: Process exited with: 1. Reason was:  ()
+
+- Clean up naming of outputted box files
 - Get a list of small utils that we want to have in here.
     - tmux
     - htop
