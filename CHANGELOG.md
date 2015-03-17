@@ -28,3 +28,17 @@ After a day of bashing this around, I've managed to create a configuration that 
     - vim
 
 ----
+
+### 17-MAR-2015 
+
+#### 9:25 AM
+
+Yesterday I completed a basic configuration for a CentOS 6 box. I need to find out why it keeps falling over when built automatically though. *If this keeps up, I can always build them in `-debug` mode and export the output.
+
+Initial goals
+
+- Investigate why this keeps falling over
+- Add special packages
+- clean up naming
+
+
