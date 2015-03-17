@@ -3,6 +3,7 @@
         {
             "type": "virtualbox-iso",
             "name": "r1centos6-vbox",
+            "vm_name": "r1centos6",
             "guest_os_type": "RedHat_64",
             "iso_url": "http://mirrors.seas.harvard.edu/centos/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
             "iso_checksum": "eb3c8be6ab668e6d83a118323a789e6c",
@@ -23,6 +24,10 @@
         "start_retry_timeout": "1m",
         "inline": [
           "sleep 15",
+          "echo Installing utilities...",
+          "sudo yum -y install epel-release",
+          "sudo yum -y install htop tmux vim iotop jnettop python-json",
+          "echo Installing Vbox Guest Additions",
           "sudo mkdir /tmp/vboxguest",
           "sudo mount -t iso9660 -o ro /dev/sr1 /tmp/vboxguest",
           "sudo yum -y --enablerepo rpmforge install dkms",
