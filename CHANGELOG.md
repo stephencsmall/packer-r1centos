@@ -41,4 +41,6 @@ Initial goals
 - Add special packages
 - clean up naming
 
+#### 9:50 AM
 
+Whoa, it worked on it's own... Awesome.
